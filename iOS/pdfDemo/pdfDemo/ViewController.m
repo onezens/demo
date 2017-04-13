@@ -23,7 +23,7 @@
     
     UIDocumentInteractionController *documentVc = [UIDocumentInteractionController interactionControllerWithURL:url];
     documentVc.delegate = self;
-    
+//    documentVc.
     [documentVc presentPreviewAnimated:YES];
     
 }

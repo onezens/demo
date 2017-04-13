@@ -15,6 +15,9 @@
 		D7874C621E9F184F003B45EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7874C601E9F184F003B45EB /* LaunchScreen.storyboard */; };
 		D7874C6B1E9F18B0003B45EB /* a.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D7874C691E9F18B0003B45EB /* a.pdf */; };
 		D7874C6C1E9F18B0003B45EB /* b.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D7874C6A1E9F18B0003B45EB /* b.pdf */; };
+		D7874C6F1E9F2D4B003B45EB /* DocumentPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7874C6E1E9F2D4B003B45EB /* DocumentPreviewController.m */; };
+		D7874C721E9F2EF8003B45EB /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7874C711E9F2EF8003B45EB /* PreviewViewController.m */; };
+		D7874C741E9F4C35003B45EB /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = D7874C731E9F4C35003B45EB /* 1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,11 @@
 		D7874C631E9F184F003B45EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7874C691E9F18B0003B45EB /* a.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = a.pdf; sourceTree = "<group>"; };
 		D7874C6A1E9F18B0003B45EB /* b.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = b.pdf; sourceTree = "<group>"; };
+		D7874C6D1E9F2D4B003B45EB /* DocumentPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentPreviewController.h; sourceTree = "<group>"; };
+		D7874C6E1E9F2D4B003B45EB /* DocumentPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentPreviewController.m; sourceTree = "<group>"; };
+		D7874C701E9F2EF8003B45EB /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		D7874C711E9F2EF8003B45EB /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
+		D7874C731E9F4C35003B45EB /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +76,11 @@
 				D7874C561E9F184F003B45EB /* AppDelegate.m */,
 				D7874C581E9F184F003B45EB /* ViewController.h */,
 				D7874C591E9F184F003B45EB /* ViewController.m */,
+				D7874C701E9F2EF8003B45EB /* PreviewViewController.h */,
+				D7874C711E9F2EF8003B45EB /* PreviewViewController.m */,
+				D7874C731E9F4C35003B45EB /* 1.png */,
+				D7874C6D1E9F2D4B003B45EB /* DocumentPreviewController.h */,
+				D7874C6E1E9F2D4B003B45EB /* DocumentPreviewController.m */,
 				D7874C5B1E9F184F003B45EB /* Main.storyboard */,
 				D7874C5E1E9F184F003B45EB /* Assets.xcassets */,
 				D7874C601E9F184F003B45EB /* LaunchScreen.storyboard */,
@@ -146,6 +159,7 @@
 			files = (
 				D7874C621E9F184F003B45EB /* LaunchScreen.storyboard in Resources */,
 				D7874C5F1E9F184F003B45EB /* Assets.xcassets in Resources */,
+				D7874C741E9F4C35003B45EB /* 1.png in Resources */,
 				D7874C6B1E9F18B0003B45EB /* a.pdf in Resources */,
 				D7874C6C1E9F18B0003B45EB /* b.pdf in Resources */,
 				D7874C5D1E9F184F003B45EB /* Main.storyboard in Resources */,
@@ -161,7 +175,9 @@
 			files = (
 				D7874C5A1E9F184F003B45EB /* ViewController.m in Sources */,
 				D7874C571E9F184F003B45EB /* AppDelegate.m in Sources */,
+				D7874C721E9F2EF8003B45EB /* PreviewViewController.m in Sources */,
 				D7874C541E9F184F003B45EB /* main.m in Sources */,
+				D7874C6F1E9F2D4B003B45EB /* DocumentPreviewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
