@@ -8,22 +8,37 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
 
+@interface ViewController ()<UIDocumentInteractionControllerDelegate>
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.navigationItem.title=@"预览";
+    
+    NSString *urlStr = [[NSBundle mainBundle] pathForResource:@"b.pdf" ofType:nil];
+    NSURL *url = [NSURL fileURLWithPath:urlStr];
+    
+    UIDocumentInteractionController *documentVc = [UIDocumentInteractionController interactionControllerWithURL:url];
+    documentVc.delegate = self;
+    
+    [documentVc presentPreviewAnimated:YES];
+    
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - UIDocumentInteractionController 代理方法
+- (UIViewController *)documentInteractionControllerViewControllerForPreview:(UIDocumentInteractionController *)controller{
+    return self;
 }
 
+- (UIView *)documentInteractionControllerViewForPreview:(UIDocumentInteractionController *)controller{
+    return self.view;
+}
+
+- (CGRect)documentInteractionControllerRectForPreview:(UIDocumentInteractionController *)controller{
+    return self.view.bounds;
+}
 
 @end
