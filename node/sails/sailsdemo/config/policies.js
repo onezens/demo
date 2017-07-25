@@ -48,4 +48,14 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+
+  // 默认所有行为需要登录
+  // 若某些行为不需要，则在下面声明
+  '*': 'isAuthenticated',
+  // 验证逻辑都不需要登录
+  // 用户创建后不再允许注册
+  AuthController: {
+    '*': true,
+    toRegister: 'userNotCreated'
+  },
 };

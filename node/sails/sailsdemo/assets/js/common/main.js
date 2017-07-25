@@ -7,9 +7,10 @@ require.config({
   paths: {
     jquery: 'jquery/dist/jquery',
     requirejs: 'requirejs/require',
-    'semantic-ui': 'semantic-ui/dist/semantic',
+    'semantic-ui': 'semantic/dist/semantic',
     underscore: 'underscore/underscore',
-    backbone: 'backbone/backbone'
+    backbone: 'backbone/backbone',
+    'semantic-form': 'semantic/dist/components/form'
   },
   packages: [
   ]
