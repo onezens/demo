@@ -1,0 +1,47 @@
+@charset "UTF-8";
+/**
+* 基本配置
+*/
+/* line 116, ../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 28, ../../sass/default/_base.scss */
+html {
+  font-size: 100%;
+}
+
+/* line 32, ../../sass/default/_base.scss */
+body {
+  font-size: 2.0rem;
+  line-height: 1.6em;
+  background-color: #ddd;
+}
+
+/* line 5, ../../sass/default/user.scss */
+.profileContainer {
+  margin-left: 15%;
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+/* line 12, ../../sass/default/user.scss */
+.profileContainer .ui.form .header {
+  text-align: left;
+}
+/* line 16, ../../sass/default/user.scss */
+.profileContainer .ui.form .field label {
+  text-align: left;
+}
+/* line 20, ../../sass/default/user.scss */
+.profileContainer .ui.form .field textarea {
+  resize: none;
+  height: 50px;
+}
+/* line 25, ../../sass/default/user.scss */
+.profileContainer #avatar img {
+  width: 350px;
+  height: 350px;
+  border: 5px solid #ccc;
+}

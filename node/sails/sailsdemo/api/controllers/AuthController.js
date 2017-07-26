@@ -20,22 +20,25 @@ module.exports = {
           user: user
         });
       }
-      req.logIn(user, function (err, next) {
+      req.logIn(user, function (err) {
         if(err) res.send(err);
         else res.send({
           message: info.message,
           user: user
         });
       })
-    });
+    })(req, res);
   },
   processRegister: function (req, res) {
     var user = req.allParams();
+    console.log(user);
     User.create(user).exec(function (err, created) {
       if (err){
+        console.log(err);
         res.view('passport/register', {err:err});
       }else{
         req.login(created, function (err, next) {
+          console.log(err);
           if(err) return next(err);
           else res.redirect('/');
         })

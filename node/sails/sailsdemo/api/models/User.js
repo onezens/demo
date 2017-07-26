@@ -11,18 +11,18 @@ module.exports = {
   attributes: {
     siteName: {
       type: 'string',
-      require: true,
+      required: true,
       minLength: 1,
       maxLength: 10
     },
     email: {
       type: 'email',
       unique: true,
-      require:true
+      required:true
     },
     password: {
       type: 'string',
-      require: true,
+      required: true,
       minLength: 6
     },
     siteDesc: {
@@ -48,7 +48,14 @@ module.exports = {
     });
   },
   afterCreate: function (createdUser, cb) {
-    this.updateSite(user);
+    var thisModule = this;
+    Category.create({name: Category.getDefault(), creator: createdUser})
+      .exec(function (err, category) {
+        if(category){
+          thisModal.updateSite(createdUser);
+          cb();
+        }
+      });
     cb();
   },
 // 用户信息更新时，更新站点信息

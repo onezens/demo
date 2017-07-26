@@ -58,4 +58,16 @@ module.exports.policies = {
     '*': true,
     toRegister: 'userNotCreated'
   },
+
+  // 文章显示逻辑不需要登录
+  ArticleController: {
+    index: 'userCreated',
+    show: 'userCreated'
+  },
+  CategoryController: {
+    getArticles: true
+  },
+  TagsController: {
+    getArticles: true
+  }
 };
