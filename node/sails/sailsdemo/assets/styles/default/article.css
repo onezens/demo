@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/**
+* 基本配置
+*/
+/* line 116, ../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 28, ../../sass/default/_base.scss */
+html {
+  font-size: 100%;
+}
+
+/* line 32, ../../sass/default/_base.scss */
+body {
+  font-size: 2.0rem;
+  line-height: 1.6em;
+  background-color: #ddd;
+}
+
+/* line 4, ../../sass/default/article.scss */
+.ui.modal {
+  min-height: 500px;
+}
+/* line 6, ../../sass/default/article.scss */
+.ui.modal .header {
+  background-color: #0086b3;
+}
+/* line 10, ../../sass/default/article.scss */
+.ui.modal .extra {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  border-top: 2px dashed #ccc;
+  background-color: #E4E4E4;
+  color: white;
+  padding: 10px 20px;
+}
+
+/* line 24, ../../sass/default/article.scss */
+.articleContainer .article {
+  display: block;
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+/* line 31, ../../sass/default/article.scss */
+.articleContainer .article .title {
+  display: block;
+  color: burlywood;
+  text-shadow: 1px 1px #ccc;
+  font-weight: bold;
+}
+/* line 38, ../../sass/default/article.scss */
+.articleContainer .article .date {
+  font-size: 1.2rem;
+  color: #4d4d4c;
+  text-align: right;
+}
+/* line 44, ../../sass/default/article.scss */
+.articleContainer .article .info .category {
+  text-align: right;
+}
+/* line 47, ../../sass/default/article.scss */
+.articleContainer .article .info .category a {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #ccc;
+  text-decoration: underline;
+}
+
+/* line 59, ../../sass/default/article.scss */
+.articleEditor {
+  padding: 20px;
+  background: #fff;
+}
+/* line 64, ../../sass/default/article.scss */
+.articleEditor .ui.form h1, .articleEditor .ui.form h2, .articleEditor .ui.form label {
+  color: #696974;
+}
+/* line 67, ../../sass/default/article.scss */
+.articleEditor .ui.form .field textarea {
+  resize: none;
+}

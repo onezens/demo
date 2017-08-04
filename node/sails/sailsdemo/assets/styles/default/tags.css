@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/**
+* 基本配置
+*/
+/* line 116, ../../../../../../../usr/local/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 28, ../../sass/default/_base.scss */
+html {
+  font-size: 100%;
+}
+
+/* line 32, ../../sass/default/_base.scss */
+body {
+  font-size: 2.0rem;
+  line-height: 1.6em;
+  background-color: #ddd;
+}
+
+/* line 3, ../../sass/default/tags.scss */
+.tagsContainer {
+  margin-left: 15%;
+  background-color: #fff;
+  padding: 10px;
+}
+/* line 64, ../../sass/default/_base.scss */
+.tagsContainer .title {
+  font-weight: 800;
+}
+/* line 68, ../../sass/default/_base.scss */
+.tagsContainer .ui.list .content {
+  font-size: 1rem;
+  color: #d4d4d5;
+}
+/* line 72, ../../sass/default/_base.scss */
+.tagsContainer .ui.list .content a.header {
+  font-size: 1.6rem;
+  font-weight: 100;
+  margin-bottom: 5px;
+}
