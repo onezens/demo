@@ -96,7 +96,7 @@ void linearListRemoveValue(LinearList *list, int index) {
     if(list == NULL || index < 0 || index >= list->length) return ;
     
     for (int i=index; i<list->length-1; i++) {
-        list->nodeValue[index] = list->nodeValue[index+1];
+        list->nodeValue[i] = list->nodeValue[i+1];
     }
     
     list->length = list->length - 1;
@@ -108,7 +108,7 @@ void linearListRemoveValue(LinearList *list, int index) {
  */
 void linearListInsertValue(LinearList *list, LinearListNodeValue *value, int index) {
     
-    if(list == NULL || index < 0 || index >= list->length) return ;
+    if(list == NULL || index < 0 || index > list->length) return ;
     
     
     //判断是否需要扩容
@@ -138,7 +138,7 @@ void linearListInsertValue(LinearList *list, LinearListNodeValue *value, int ind
         list->nodeValue[i] = list->nodeValue[i-1];
     }
     
-    list->nodeValue = value;
+    list->nodeValue[index] = value;
     
     
 }

@@ -7,11 +7,60 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LinearList.h"
 
 int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        // insert code here...
-        NSLog(@"Hello, World!");
-    }
+
+    
+    NSString *str1 = @"123";
+    NSString *str2 = @"456";
+    NSString *str3 = @"789";
+
+    LinearList *list = linearListCreate(3);
+    
+    linearListAddValue(list, (__bridge LinearListNodeValue)str1);
+    
+    linearListPrint(list);
+    
+    linearListInsertValue(list, (__bridge LinearListNodeValue)str2, 0);
+    
+    linearListInsertValue(list, (__bridge LinearListNodeValue)str3, 0);
+    
+    linearListInsertValue(list, (__bridge LinearListNodeValue)str3, list->length);
+    
+    linearListPrint(list);
+    
+    linearListRemoveValue(list, 2);
+    
+    linearListClear(list);
+    
+    
+    linearListPrint(list);
+    
+    linearListInsertValue(list, (__bridge LinearListNodeValue)str2, 0);
+    
+    linearListInsertValue(list, (__bridge LinearListNodeValue)str3, 0);
+    
+    linearListInsertValue(list, (__bridge LinearListNodeValue)str3, list->length);
+    
+    linearListPrint(list);
+    
+    linearListDeleteValue(list, (__bridge LinearListNodeValue)str3);
+    
+    linearListPrint(list);
+    
+    NSLog(@"length: %d", linearListLength(list));
+    
+    
+    linearListUpdateValue(list, (__bridge LinearListNodeValue)str1, 0);
+    linearListPrint(list);
+    
+    LinearListNodeValue *value = linearListGetValue(list, 0);
+    
+    NSLog(@"%@",value);
+    
+    linearListRelease(list);
+    
+    
     return 0;
 }
