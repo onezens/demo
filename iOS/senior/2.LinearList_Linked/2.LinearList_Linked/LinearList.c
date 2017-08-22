@@ -40,6 +40,8 @@ LinearList * linearListCreate() {
     if (list) {
         list->length = 0;
         list->header = (LinearListNode *)(list+1);
+        list->header->next = NULL;
+        list->header->value = NULL;
     }
     
     return list;
@@ -75,12 +77,14 @@ void linearListClear(LinearList *list) {
     }
     
     LinearListNode *node = list->header;
-
-    while (node->next) {
+    node = node->next;
+    
+    for (int i=0; i<list->length; i++) {
         LinearListNode *next = node->next;
         free(node);
         node = next;
     }
+    
     
     list->length = 0;
 }
@@ -111,12 +115,13 @@ LinearListNodeValue * linearListGetValue(LinearList *list, int index) {
     LinearListNode *node = list->header;
     int currentIdx = 0;
     
-    while (node->next) {
+    while (node->next != NULL) {
+        node = node->next;
         if (currentIdx == index) {
             break;
         }
         currentIdx++;
-        node = node->next;
+        
     }
     return node->value;
 }
@@ -135,7 +140,7 @@ void linearListRemoveValue(LinearList *list, int index) {
     if(node->next == NULL) return;
     int currentIdx = 0;
     
-    while (node->next) {
+    while (node->next != NULL) {
         if (currentIdx == index-1) {
             break;
         }
@@ -157,20 +162,22 @@ void linearListInsertValue(LinearList *list, LinearListNodeValue *value, int ind
         return ;
     }
     
-    LinearListNode *node = list->header;
+    LinearListNode *preNode = list->header;
     int currentIdx = 0;
     
-    while (node->next) {
-        if (currentIdx == index-1) {
+    while (preNode->next != NULL) {
+        
+        if (currentIdx == index) {
             break;
         }
+        preNode = preNode->next;
         currentIdx++;
-        node = node->next;
+        
     }
     LinearListNode *newNode = malloc(sizeof(LinearListNode));
     newNode->value = value;
-    newNode->next = node->next;
-    node->next = newNode;
+    newNode->next = preNode->next;
+    preNode->next = newNode;
     list->length = list->length+1;
 }
 
@@ -197,7 +204,7 @@ void linearListDeleteValue(LinearList *list, LinearListNodeValue *value) {
     
     LinearListNode *node = list->header;
     LinearListNode *preNode = node;
-    while (node->next) {
+    while (node->next != NULL) {
         if (node->value == value) {
             break;
         }
@@ -214,20 +221,22 @@ void linearListDeleteValue(LinearList *list, LinearListNodeValue *value) {
  */
 void linearListUpdateValue(LinearList *list, LinearListNodeValue *value, int index) {
     
-    if (list==NULL || index<0 || index >= list->length || value == NULL) {
-        return;
-    }
     if (list->length == 0) {
         linearListInsertValue(list, value, 0);
         return;
     }
+    if (list==NULL || index<0 || index >= list->length || value == NULL) {
+        return;
+    }
+
     LinearListNode *node = list->header;
     int currentIdx = 0;
-    while (node->next) {
+    while (node->next != NULL) {
+        node = node->next;
         if (currentIdx == index) {
             break;
         }
-        node = node->next;
+        currentIdx++;
     }
     
     node->value = value;

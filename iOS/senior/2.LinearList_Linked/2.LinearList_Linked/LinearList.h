@@ -22,11 +22,9 @@ typedef void LinearList;
 
 /**
  创建线性表对象
- 
- @param capacity 初始化容量
  @return  创建的线性表对象
  */
-LinearList * linearListCreate(int capacity) ;
+LinearList * linearListCreate();
 
 
 /**
