@@ -1,8 +1,8 @@
 //
 //  LinearList.h
-//  1.LinearList
+//  2.LinearList_Linked
 //
-//  Created by wz on 2017/8/21.
+//  Created by wz on 2017/8/22.
 //  Copyright © 2017年 cc.onezen. All rights reserved.
 //
 
@@ -21,11 +21,11 @@ typedef void LinearList;
 #endif
 
 /**
-创建线性表对象
-
-@param capacity 初始化容量
-@return  创建的线性表对象
-*/
+ 创建线性表对象
+ 
+ @param capacity 初始化容量
+ @return  创建的线性表对象
+ */
 LinearList * linearListCreate(int capacity) ;
 
 
@@ -89,3 +89,4 @@ void linearListPrint(LinearList *list);
 
 
 #endif /* LinearList_h */
+

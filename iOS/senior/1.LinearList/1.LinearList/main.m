@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
     
     linearListInsertValue(list, (__bridge LinearListNodeValue)str3, 0);
     
-    linearListInsertValue(list, (__bridge LinearListNodeValue)str3, list->length);
+    linearListInsertValue(list, (__bridge LinearListNodeValue)str3, 2);
     
     linearListPrint(list);
     
@@ -41,7 +41,7 @@ int main(int argc, const char * argv[]) {
     
     linearListInsertValue(list, (__bridge LinearListNodeValue)str3, 0);
     
-    linearListInsertValue(list, (__bridge LinearListNodeValue)str3, list->length);
+    linearListInsertValue(list, (__bridge LinearListNodeValue)str3, 2);
     
     linearListPrint(list);
     

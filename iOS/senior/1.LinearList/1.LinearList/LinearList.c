@@ -6,10 +6,22 @@
 //  Copyright © 2017年 cc.onezen. All rights reserved.
 //
 
-#include "LinearList.h"
+
+#define LINEARLIST_STRUCT
+typedef void * LinearListNodeValue;
+/**
+ 线性表结构
+ */
+typedef struct {
+    int capacity; //容量
+    int length;  //元素个数
+    LinearListNodeValue * nodeValue; //节点指针
+}LinearList;
 
 #include <string.h>
 #include <stdlib.h>
+#include "LinearList.h"
+
 
 
 /**
