@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusBar = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let menu = NSMenu()
     let popover = NSPopover()
+    var eventMonitor: EventMonitor?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -24,6 +25,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             //button.action = Selector(("showPopView:"))
             
         }
+        eventMonitor = EventMonitor.init(mask: [.leftMouseUp, .rightMouseUp], eventHanlder: { (event) in
+            self.closePop(sender: event)
+        })
+        eventMonitor?.start()
         
         //item形式
 //        menu.addItem(NSMenuItem.init(title: "showWeather", action: #selector(AppDelegate.showWeather), keyEquivalent: "S"))
@@ -39,14 +44,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func showPopView(sender: NSStatusBarButton) -> Void {
         
         if popover.isShown {
-            popover.performClose(sender)
+            closePop(sender: sender)
         }else{
-            if let button = statusBar.button {
-                popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-            }
+            showPop()
         }
     }
     
+    
+    func closePop(sender: AnyObject?) -> Void {
+        popover.performClose(sender)
+        eventMonitor?.stop()
+    }
+    
+    func showPop() -> Void {
+        if let button = statusBar.button {
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+        }
+        eventMonitor?.start()
+    }
     
     @objc func statusMenuQuit() -> Void {
         print("quit")
