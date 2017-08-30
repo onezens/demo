@@ -157,12 +157,5 @@ class ViewController: NSViewController, NSOutlineViewDelegate, NSOutlineViewData
         treeController.move(sourceNode!, to: fromIndexPath! as IndexPath)
     }
     
-    
-    
-    
-    
-    
-    
-
 }
 

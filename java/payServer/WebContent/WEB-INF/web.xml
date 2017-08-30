@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Dream_20170503_Pay_WxPay_Server</display-name>
+	<welcome-file-list>
+		<welcome-file>/WxPayServlet</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet>
+		<description></description>
+		<display-name>WxPayServlet</display-name>
+		<servlet-name>WxPayServlet</servlet-name>
+		<servlet-class>cc.onezen.pay.wxpay.WxPayServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WxPayServlet</servlet-name>
+		<url-pattern>/WxPayServlet</url-pattern>
+	</servlet-mapping>
+	
+	
+</web-app>
