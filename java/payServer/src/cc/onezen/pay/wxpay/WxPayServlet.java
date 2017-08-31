@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.tz.dream.pay.wxpay.http.bean.OrderResult;
-import com.tz.dream.pay.wxpay.http.bean.OrderResult.OrderBean;
-import com.tz.dream.pay.wxpay.http.impl.PrepayIdRequestHandler;
-import com.tz.dream.pay.wxpay.utils.ConstantUtil;
-import com.tz.dream.pay.wxpay.utils.OrderUtils;
-import com.tz.dream.pay.wxpay.utils.WXUtil;
+
+import cc.onezen.pay.http.bean.OrderResult;
+import cc.onezen.pay.http.bean.OrderResult.OrderBean;
+import cc.onezen.pay.http.impl.PrepayIdRequestHandler;
+import cc.onezen.pay.utils.ConstantUtil;
+import cc.onezen.pay.utils.OrderUtils;
+import cc.onezen.pay.utils.WXUtil;
 
 public class WxPayServlet extends HttpServlet {
 	// 首先：定义支付应用ID、商户ID等等...
