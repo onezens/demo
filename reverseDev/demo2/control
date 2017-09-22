@@ -1,0 +1,10 @@
+Package: cc.onezen.demo1
+Name: demo1
+Depends: mobilesubstrate
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: wz
+Author: wz
+Section: Tweaks
+Homepage: http://www.onezen.cc
