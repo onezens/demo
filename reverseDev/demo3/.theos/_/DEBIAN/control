@@ -1,0 +1,11 @@
+Package: cc.onezen.demo3
+Name: demo3
+Depends: mobilesubstrate
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: wz
+Author: wz
+Section: Tweaks
+Homepage: http://www.onezen.cc
+Version: 0.0.1-1+debug
+Installed-Size: 76
