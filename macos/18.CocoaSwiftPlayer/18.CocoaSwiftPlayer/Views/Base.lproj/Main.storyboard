@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -691,6 +691,9 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="Col-eu-Suc"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="fNh-Kg-Hfa" kind="relationship" relationship="window.shadowedContentViewController" id="Vbs-ua-F7r"/>
@@ -716,6 +719,7 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="splitView" destination="Yq0-3C-coX" id="2C4-C2-iy4"/>
                         <segue destination="2cv-YU-CLC" kind="relationship" relationship="splitItems" id="AJW-1D-ZvW"/>
                         <segue destination="Ap8-1Q-gYa" kind="relationship" relationship="splitItems" id="tOg-r0-oIn"/>
                     </connections>
@@ -740,6 +744,7 @@
                         </connections>
                     </splitView>
                     <connections>
+                        <outlet property="splitView" destination="D8Y-q2-VIe" id="l4T-iR-hfI"/>
                         <segue destination="ykh-Ve-ACh" kind="relationship" relationship="splitItems" id="koO-8I-nWy"/>
                         <segue destination="69L-vD-0u9" kind="relationship" relationship="splitItems" id="Bxz-yZ-eDA"/>
                     </connections>
@@ -748,10 +753,10 @@
             </objects>
             <point key="canvasLocation" x="66" y="1131"/>
         </scene>
-        <!--Player List Controller-->
+        <!--Play List Controller-->
         <scene sceneID="Mpt-6d-JKE">
             <objects>
-                <viewController id="ykh-Ve-ACh" customClass="PlayerListController" customModule="_8_CocoaSwiftPlayer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ykh-Ve-ACh" customClass="PlayListController" customModule="_8_CocoaSwiftPlayer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="bo7-Wz-324">
                         <rect key="frame" x="0.0" y="0.0" width="166" height="320"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -782,7 +787,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="oIY-PA-esp">
+                                                        <tableCellView identifier="ListCell" id="oIY-PA-esp" customClass="PlayListCell" customModule="_8_CocoaSwiftPlayer" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="161" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -797,6 +802,7 @@
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
+                                                                <outlet property="nameField" destination="8OC-7P-vtf" id="unE-A5-puq"/>
                                                                 <outlet property="textField" destination="8OC-7P-vtf" id="vHR-Xj-ZEH"/>
                                                             </connections>
                                                         </tableCellView>
@@ -817,7 +823,7 @@
                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <tableHeaderView key="headerView" id="Cpm-mF-fNH">
+                                <tableHeaderView key="headerView" identifier="HeaderCell" id="Cpm-mF-fNH">
                                     <rect key="frame" x="0.0" y="0.0" width="164" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
@@ -831,6 +837,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="addPlayList:" target="ykh-Ve-ACh" id="V4e-0G-qz4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -850,6 +859,9 @@
                             <constraint firstItem="oig-oW-mzx" firstAttribute="leading" secondItem="bo7-Wz-324" secondAttribute="leading" id="vxo-Jj-OQ1"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="outlineView" destination="YZX-Jl-mdq" id="mTF-FT-iDx"/>
+                    </connections>
                 </viewController>
                 <customObject id="udt-Mc-54v" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
