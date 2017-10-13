@@ -13,5 +13,6 @@ class PlayListCell: NSTableCellView {
 
 
     @IBOutlet weak var nameField: NSTextField!
+    @IBOutlet weak var countField: NSTextField!
     
 }

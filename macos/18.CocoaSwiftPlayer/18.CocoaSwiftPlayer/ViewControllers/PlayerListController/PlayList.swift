@@ -9,6 +9,11 @@
 import Cocoa
 
 class PlayList: NSObject {
+    
     var name = "PlayList"
-    var count:Int = 30
+    var count:Int {
+        return songLists.count
+    }
+    var songLists = [Song]()
+    
 }

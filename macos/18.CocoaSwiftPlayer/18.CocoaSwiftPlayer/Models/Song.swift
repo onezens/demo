@@ -10,4 +10,8 @@ import Cocoa
 
 class Song: NSObject {
 
+    @objc dynamic var name = "song name"
+    @objc dynamic var duration = 20
+    @objc dynamic var artist = "songer"
+    @objc dynamic var playCount = 30
 }

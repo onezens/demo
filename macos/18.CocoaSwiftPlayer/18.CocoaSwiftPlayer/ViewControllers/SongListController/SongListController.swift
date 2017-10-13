@@ -9,10 +9,17 @@
 import Cocoa
 
 class SongListController: NSViewController {
+    
+    //bind to array must be @objc
+    @objc dynamic var songLists = [Song]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        songLists.append(Song())
+        songLists.append(Song())
+        songLists.append(Song())
+        songLists.append(Song())
     }
     
 }
