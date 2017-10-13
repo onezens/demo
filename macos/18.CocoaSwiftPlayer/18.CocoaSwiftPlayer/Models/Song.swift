@@ -14,4 +14,14 @@ class Song: NSObject {
     @objc dynamic var duration = 20
     @objc dynamic var artist = "songer"
     @objc dynamic var playCount = 30
+    @objc dynamic var surl: String = ""
+    
+    override init() {
+        super.init()
+    }
+    
+    init(dict: Dictionary<String, Any>) {
+        super.init()
+        setValuesForKeys(dict)
+    }
 }

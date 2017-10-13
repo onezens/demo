@@ -1102,6 +1102,9 @@
                             <constraint firstAttribute="trailing" secondItem="IIo-va-dzX" secondAttribute="trailing" id="tnO-DX-XOU"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="vw4-gg-8aM" id="Pbu-QI-idq"/>
+                    </connections>
                 </viewController>
                 <customObject id="fmT-1G-c9W" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <arrayController objectClassName="_8_CocoaSwiftPlayer.PlayList.Song" id="Ikm-fK-tjt">

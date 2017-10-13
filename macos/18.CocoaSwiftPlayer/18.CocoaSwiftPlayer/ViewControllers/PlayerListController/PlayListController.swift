@@ -18,6 +18,37 @@ class PlayListController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+
+        getPlayList()
+        
+        outlineView.delegate = self
+        outlineView.dataSource = self
+        
+    }
+    
+    func getPlayList(){
+        
+        if let songDataPath = Bundle.main.path(forResource: "songs.json", ofType: nil) {
+            
+            let songData =  NSData(contentsOfFile: songDataPath)
+            let obj = try? JSONSerialization.jsonObject(with: songData! as Data , options: JSONSerialization.ReadingOptions.allowFragments)
+            
+            guard let playListArr = obj as? Array<Any> else{
+                return
+            }
+            
+            var songList = [Song]()
+            for listItem in playListArr.reversed() {
+                let newSong = Song(dict: listItem as! Dictionary<String, Any> )
+                songList.append(newSong)
+                
+            }
+            let playList = PlayList()
+            playList.songLists = songList
+            playLists.append(playList)
+            
+        }
+        
         
         let list = PlayList()
         playLists.append(list)
@@ -25,18 +56,10 @@ class PlayListController: NSViewController {
         list.songLists.append(Song())
         list.songLists.append(Song())
         list.songLists.append(Song())
-        playLists.append(PlayList())
-        playLists.append(PlayList())
-        outlineView.delegate = self
-        outlineView.dataSource = self
         
         
-    }
-    
-    func headerView() -> NSTableHeaderView {
-        let headerView = NSTableHeaderView()
-        headerView.layer?.backgroundColor = NSColor.red.cgColor
-        return headerView
+        playLists.append(PlayList())
+        playLists.append(PlayList())
     }
     
     @IBAction func addPlayList(_ sender: Any) {
@@ -101,6 +124,18 @@ extension PlayListController:  NSOutlineViewDelegate{
         }
     }
     
+    
+    func outlineViewSelectionDidChange(_ notification: Notification) {
+        
+        let selectRow = outlineView.selectedRow
+        
+        if selectRow > 0 {
+            
+            let list = self.playLists[selectRow - 1]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constant.NotificationName.SelectPlayList), object: list)
+        }
+
+    }
 
 }
 

@@ -14,6 +14,6 @@ class PlayList: NSObject {
     var count:Int {
         return songLists.count
     }
-    var songLists = [Song]()
+    @objc dynamic var songLists = [Song]()
     
 }
