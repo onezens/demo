@@ -41,6 +41,6 @@ extension SongListController: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         
         let song = songLists[tableView.selectedRow]
-        print(song.name)
+        MusicPlayer.musicPlayer.play(urlString: song.surl)
     }
 }
