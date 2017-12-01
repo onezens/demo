@@ -20,27 +20,92 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-     self.backgroundSession = [self getDownloadURLSession];
+    self.backgroundSession = [self getDownloadURLSession];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self bgUploadStream];
+}
+
+- (IBAction)upload:(id)sender {
     
+    [self upload];
+}
+
+- (IBAction)bgupload:(id)sender {
     [self bgUpload];
 }
-- (void)bgUpload{
-   
-    NSURL *url = [NSURL URLWithString:@"http://localhost:3004/upload/stream"];
+
+- (IBAction)bguploadStream:(id)sender {
+    
+    [self bgUploadStream];
+}
+
+
+
+
+#pragma mark - stream
+
+
+
+
+
+
+
+#pragma mark - background upload
+
+
+- (void)bgUploadStream
+{
+    NSLog(@"%s", __func__);
+    NSURL *url = [NSURL URLWithString:@"http://10.5.80.187:3004/upload/stream"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"jpg"];
-    self.uploadTask = [self.backgroundSession uploadTaskWithRequest:request fromFile:[NSURL fileURLWithPath:path]];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
+//    NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
+//    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8;boundary=%@",boundary];
+//    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    request.HTTPBodyStream = [NSInputStream inputStreamWithFileAtPath:path];
+    
+//    request.HTTPBodyStream = [[NSInputStream alloc] initWithData:bodydata];
+    [request setValue:@"2334" forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/octet-stream" forHTTPHeaderField:@"Content-Type"];
+    self.uploadTask = [self.backgroundSession uploadTaskWithStreamedRequest:request];
     [self.uploadTask resume];
 }
 
--(void)upload {
+- (void)bgUpload{
+    NSLog(@"%s", __func__);
+    NSURL *url = [NSURL URLWithString:@"http://10.5.80.187:3004/upload/stream"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"icon.jpg" ofType:nil];
+    self.uploadTask = [self.backgroundSession uploadTaskWithRequest:request fromFile:[NSURL fileURLWithPath:path]];
+    [self.uploadTask resume];
+}
+- (NSURLSession *)getDownloadURLSession {
+    
+    NSURLSession *session = nil;
+    NSString *identifier = [self backgroundSessionIdentifier];
+    NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
+    sessionConfig.timeoutIntervalForResource = 24*60*60;
+    session = [NSURLSession sessionWithConfiguration:sessionConfig
+                                            delegate:self
+                                       delegateQueue:[NSOperationQueue mainQueue]];
+    return session;
+}
 
-    NSURL *url = [NSURL URLWithString:@"http://localhost/upload"];
+- (NSString *)backgroundSessionIdentifier {
+    NSString *bundleId = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    NSString *identifier = [NSString stringWithFormat:@"%@.BackgroundSession", bundleId];
+    return identifier;
+}
+
+
+#pragma mark - 正常的form上传
+-(void)upload {
+ NSLog(@"%s", __func__);
+    NSURL *url = [NSURL URLWithString:@"http://localhost:3004/upload/"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"swagger-api=s%3A9ePi-4wGuhkUaNySuxduosVG0oq-T1oc.3gHlSd5WMYFXNdljAa%2FldopiBRFmXwO9DyGga4DBwD0" forHTTPHeaderField:@"Cookie"];
@@ -66,7 +131,7 @@
     
     //1 access_token
     [bodyStr appendFormat:@"--%@\r\n",boundary];//\n:换行 \n:切换到行首
-    [bodyStr appendFormat:@"Content-Disposition: form-data; name=\"avatar\"; filename=\"icon.jpg\""];
+    [bodyStr appendFormat:@"Content-Disposition: application/octet-stream; name=\"avatar\"; filename=\"icon.jpg\""];
     [bodyStr appendFormat:@"\r\n\r\n"];
     
     
@@ -95,27 +160,46 @@
     
 }
 
-- (NSURLSession *)getDownloadURLSession {
-    
-    NSURLSession *session = nil;
-    NSString *identifier = [self backgroundSessionIdentifier];
-    NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
-    sessionConfig.timeoutIntervalForResource = 24*60*60;
-    session = [NSURLSession sessionWithConfiguration:sessionConfig
-                                            delegate:self
-                                       delegateQueue:[NSOperationQueue mainQueue]];
-    return session;
-}
-
-- (NSString *)backgroundSessionIdentifier {
-    NSString *bundleId = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-    NSString *identifier = [NSString stringWithFormat:@"%@.BackgroundSession", bundleId];
-    return identifier;
-}
 
 
 #pragma mark - nsurlsession delegate
 
+
+/* Sent if a task requires a new, unopened body stream.  This may be
+ * necessary when authentication has failed for any request that
+ * involves a body stream.
+ */
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+ needNewBodyStream:(void (^)(NSInputStream * _Nullable bodyStream))completionHandler {
+    
+    NSInputStream *inputStream = nil;
+    
+    //有自定义的taskNeedNewBodyStream,用自定义的，不然用task里原始的stream
+//    if (self.taskNeedNewBodyStream) {
+//        inputStream = self.taskNeedNewBodyStream(session, task);
+//    } else
+    if (task.originalRequest.HTTPBodyStream && [task.originalRequest.HTTPBodyStream conformsToProtocol:@protocol(NSCopying)]) {
+        inputStream = [task.originalRequest.HTTPBodyStream copy];
+    }
+    
+
+    
+    inputStream = task.originalRequest.HTTPBodyStream ;
+//    NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
+//    NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
+//    inputStream = [[NSInputStream alloc] initWithData:bodydata];
+//    if(!inputStream){
+//        NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
+//        NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
+//        inputStream = [[NSInputStream alloc] initWithData:bodydata];
+//    }
+    
+    if (completionHandler) {
+        completionHandler(inputStream);
+    }
+
+    
+}
 
 /* The last message a session receives.  A session will only become
  * invalid because of a systemic error or when it has been
@@ -161,7 +245,10 @@ expectedTotalBytes:(int64_t)expectedTotalBytes {
     NSLog(@"fileOffset:%lld expectedTotalBytes:%lld",fileOffset,expectedTotalBytes);
 }
 
-
+-(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend{
+    
+    NSLog(@"progress: %f" ,totalBytesSent/(float)totalBytesExpectedToSend);
+}
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 willPerformHTTPRedirection:(NSHTTPURLResponse *)response
@@ -223,6 +310,7 @@ didBecomeStreamTask:(NSURLSessionStreamTask *)streamTask{
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
     didReceiveData:(NSData *)data{
     NSLog(@"%s", __func__);
+    NSLog(@"%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 }
 
 /* Invoke the completion routine with a valid NSCachedURLResponse to
