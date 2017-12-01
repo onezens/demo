@@ -21,81 +21,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
-    
+     self.backgroundSession = [self getDownloadURLSession];
 }
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     [self bgUpload];
 }
 - (void)bgUpload{
-    self.backgroundSession = [self getDownloadURLSession];
    
-    NSURL *url = [NSURL URLWithString:@"http://api.onezen.cc/v1/users/upload"];
-    
-    //2 request
+    NSURL *url = [NSURL URLWithString:@"http://localhost:3004/upload/stream"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    //(1)请求方式
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"swagger-api=s%3A9ePi-4wGuhkUaNySuxduosVG0oq-T1oc.3gHlSd5WMYFXNdljAa%2FldopiBRFmXwO9DyGga4DBwD0" forHTTPHeaderField:@"Cookie"];
-    //(2)请求头
-    //上传任务,必须要添加的字段
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8;boundary=%@",boundary];
-    
-    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
-    
-    //(3)请求体
-    NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
-    
-    NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
-    
-    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"jpg"];
     self.uploadTask = [self.backgroundSession uploadTaskWithRequest:request fromFile:[NSURL fileURLWithPath:path]];
-
     [self.uploadTask resume];
 }
 
 -(void)upload {
-    //1 url
-    NSURL *url = [NSURL URLWithString:@"http://api.onezen.cc/v1/users/upload"];
-    
-    //2 request
+
+    NSURL *url = [NSURL URLWithString:@"http://localhost/upload"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    //(1)请求方式
     [request setHTTPMethod:@"POST"];
     [request setValue:@"swagger-api=s%3A9ePi-4wGuhkUaNySuxduosVG0oq-T1oc.3gHlSd5WMYFXNdljAa%2FldopiBRFmXwO9DyGga4DBwD0" forHTTPHeaderField:@"Cookie"];
-    //(2)请求头
-    //上传任务,必须要添加的字段
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8;boundary=%@",boundary];
-    
     [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
-    
-    //(3)请求体
     NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
-    
     NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
-    
-    //3 session
     NSURLSession *session = [NSURLSession sharedSession];
-    
-    //4 task
-    /*
-     Request:请求对象
-     fromData:请求体
-     */
     NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromData:bodydata completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
         //打印出响应体，查看是否发送成功
         NSLog(@"response = %@",response);
         
     }];
-    
-
-    
-    //5 resume
     [task resume];
   
 }
@@ -142,6 +100,7 @@
     NSURLSession *session = nil;
     NSString *identifier = [self backgroundSessionIdentifier];
     NSURLSessionConfiguration* sessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:identifier];
+    sessionConfig.timeoutIntervalForResource = 24*60*60;
     session = [NSURLSession sessionWithConfiguration:sessionConfig
                                             delegate:self
                                        delegateQueue:[NSOperationQueue mainQueue]];
