@@ -15,7 +15,6 @@
 		3591AA841FC2D173003D96D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3591AA821FC2D173003D96D3 /* LaunchScreen.storyboard */; };
 		3591AA871FC2D173003D96D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3591AA861FC2D173003D96D3 /* main.m */; };
 		3591AA901FC2DC84003D96D3 /* icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3591AA8F1FC2DC81003D96D3 /* icon.jpg */; };
-		3591AA911FC2DC87003D96D3 /* xm.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 3591AA8E1FC2DA3D003D96D3 /* xm.dmg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +29,6 @@
 		3591AA831FC2D173003D96D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3591AA851FC2D173003D96D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3591AA861FC2D173003D96D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3591AA8E1FC2DA3D003D96D3 /* xm.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = xm.dmg; sourceTree = "<group>"; };
 		3591AA8F1FC2DC81003D96D3 /* icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = icon.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +64,6 @@
 			children = (
 				3591AA771FC2D173003D96D3 /* AppDelegate.h */,
 				3591AA781FC2D173003D96D3 /* AppDelegate.m */,
-				3591AA8E1FC2DA3D003D96D3 /* xm.dmg */,
 				3591AA7A1FC2D173003D96D3 /* ViewController.h */,
 				3591AA7B1FC2D173003D96D3 /* ViewController.m */,
 				3591AA8F1FC2DC81003D96D3 /* icon.jpg */,
@@ -139,7 +136,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3591AA911FC2DC87003D96D3 /* xm.dmg in Resources */,
 				3591AA901FC2DC84003D96D3 /* icon.jpg in Resources */,
 				3591AA841FC2D173003D96D3 /* LaunchScreen.storyboard in Resources */,
 				3591AA811FC2D173003D96D3 /* Assets.xcassets in Resources */,
