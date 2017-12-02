@@ -14,7 +14,10 @@
 @property (nonatomic, strong) NSURLSessionUploadTask *uploadTask;
 
 @end
+
 #define boundary @"----WebKitFormBoundaryFoBXvlPSGohXlI5z"
+#define kStreamUploadUrl @"http://10.5.80.187:3004/upload/stream"
+#define kFormUploadUrl   @"http://10.5.80.187:3004/upload/"
 
 @implementation ViewController
 
@@ -23,60 +26,63 @@
     self.backgroundSession = [self getDownloadURLSession];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self bgUploadStream];
-}
-
 - (IBAction)upload:(id)sender {
-    
     [self upload];
 }
-
 - (IBAction)bgupload:(id)sender {
-    [self bgUpload];
+    [self bgUploadFromFile];
 }
-
 - (IBAction)bguploadStream:(id)sender {
     
-    [self bgUploadStream];
+    [self bgUploadStreamFile];
 }
-
-
-
+- (IBAction)bgUploadForm:(id)sender {
+    [self bgUploadStreamForm];
+}
 
 #pragma mark - stream
 
 
 
-
-
-
-
 #pragma mark - background upload
 
-
-- (void)bgUploadStream
-{
+- (void)bgUploadStreamFile {
+    
     NSLog(@"%s", __func__);
-    NSURL *url = [NSURL URLWithString:@"http://10.5.80.187:3004/upload/stream"];
+    NSURL *url = [NSURL URLWithString:kStreamUploadUrl];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
-//    NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
-//    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8;boundary=%@",boundary];
-//    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    NSDictionary *fileAttri = [fileMgr attributesOfItemAtPath:path error:nil];
+    NSNumber *fileSize = [fileAttri valueForKey:@"NSFileSize"];
     request.HTTPBodyStream = [NSInputStream inputStreamWithFileAtPath:path];
-    
-//    request.HTTPBodyStream = [[NSInputStream alloc] initWithData:bodydata];
-    [request setValue:@"2334" forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%zd", fileSize.integerValue] forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/octet-stream" forHTTPHeaderField:@"Content-Type"];
     self.uploadTask = [self.backgroundSession uploadTaskWithStreamedRequest:request];
     [self.uploadTask resume];
 }
 
-- (void)bgUpload{
+
+- (void)bgUploadStreamForm
+{
     NSLog(@"%s", __func__);
-    NSURL *url = [NSURL URLWithString:@"http://10.5.80.187:3004/upload/stream"];
+    NSURL *url = [NSURL URLWithString:kFormUploadUrl];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
+    NSData *bodydata = [self buildBodyDataWithPicPath:path];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8;boundary=%@",boundary];
+    [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+    [request setValue:[NSString stringWithFormat:@"%zd", bodydata.length] forHTTPHeaderField:@"Content-Length"];
+    request.HTTPBodyStream = [NSInputStream inputStreamWithData:bodydata];
+    self.uploadTask = [self.backgroundSession uploadTaskWithStreamedRequest:request];
+    [self.uploadTask resume];
+}
+
+- (void)bgUploadFromFile{
+    NSLog(@"%s", __func__);
+    NSURL *url = [NSURL URLWithString:kStreamUploadUrl];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"icon.jpg" ofType:nil];
@@ -105,14 +111,13 @@
 #pragma mark - 正常的form上传
 -(void)upload {
  NSLog(@"%s", __func__);
-    NSURL *url = [NSURL URLWithString:@"http://localhost:3004/upload/"];
+    NSURL *url = [NSURL URLWithString:kFormUploadUrl];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"swagger-api=s%3A9ePi-4wGuhkUaNySuxduosVG0oq-T1oc.3gHlSd5WMYFXNdljAa%2FldopiBRFmXwO9DyGga4DBwD0" forHTTPHeaderField:@"Cookie"];
     NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; charset=utf-8;boundary=%@",boundary];
     [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
     NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
-    NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
+    NSData *bodydata = [self buildBodyDataWithPicPath:path];
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request fromData:bodydata completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         //打印出响应体，查看是否发送成功
@@ -124,39 +129,25 @@
 }
 
 
--(NSData*)buildBodyDataWithStatus:(NSString*)text withPicPath:(NSString *)path{
+-(NSData*)buildBodyDataWithPicPath:(NSString *)path{
+    
     NSMutableData *bodyData = [NSMutableData data];
-    //创建可变字符串
     NSMutableString *bodyStr = [NSMutableString string];
-    
-    //1 access_token
     [bodyStr appendFormat:@"--%@\r\n",boundary];//\n:换行 \n:切换到行首
-    [bodyStr appendFormat:@"Content-Disposition: application/octet-stream; name=\"avatar\"; filename=\"icon.jpg\""];
+    [bodyStr appendFormat:@"Content-Disposition: form-data; name=\"sampleFile\"; filename=\"icon.jpg\""];
     [bodyStr appendFormat:@"\r\n\r\n"];
-    
     
     NSData *start = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
     [bodyData appendData:start];
     NSData *picData = [NSData dataWithContentsOfFile:path];
     [bodyData appendData:picData];
 
-
     bodyStr = [NSMutableString string];
-    [bodyStr appendFormat:@"--%@\r\n",boundary];
-//    [bodyStr appendFormat:@"\r\n\r\n"];
-    [bodyStr appendFormat:@"--%@\r\n",boundary];//\n:换行 \n:切换到行首
-    [bodyStr appendFormat:@"Content-Disposition: form-data; name=\"username\""];
-    [bodyStr appendFormat:@"\r\n\r\n"];
-    [bodyStr appendFormat:@"%@\r\n",text];
-    [bodyStr appendFormat:@"--%@\r\n",boundary];
+    [bodyStr appendFormat:@"\r\n--%@--",boundary];
     
     NSData *endData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
     [bodyData appendData:endData];
-    
-    
-    
     return bodyData;
-    
     
 }
 
@@ -173,27 +164,12 @@
  needNewBodyStream:(void (^)(NSInputStream * _Nullable bodyStream))completionHandler {
     
     NSInputStream *inputStream = nil;
-    
-    //有自定义的taskNeedNewBodyStream,用自定义的，不然用task里原始的stream
-//    if (self.taskNeedNewBodyStream) {
-//        inputStream = self.taskNeedNewBodyStream(session, task);
-//    } else
     if (task.originalRequest.HTTPBodyStream && [task.originalRequest.HTTPBodyStream conformsToProtocol:@protocol(NSCopying)]) {
         inputStream = [task.originalRequest.HTTPBodyStream copy];
     }
-    
-
-    
-    inputStream = task.originalRequest.HTTPBodyStream ;
-//    NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
-//    NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
-//    inputStream = [[NSInputStream alloc] initWithData:bodydata];
-//    if(!inputStream){
-//        NSString *path = [[NSBundle mainBundle]pathForResource:@"icon" ofType:@"jpg"];
-//        NSData *bodydata = [self buildBodyDataWithStatus:@"赞" withPicPath:path];
-//        inputStream = [[NSInputStream alloc] initWithData:bodydata];
-//    }
-    
+    if(!inputStream){
+        inputStream = task.originalRequest.HTTPBodyStream ;
+    }
     if (completionHandler) {
         completionHandler(inputStream);
     }

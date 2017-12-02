@@ -27,11 +27,20 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bIL-CN-gHr">
-                                <rect key="frame" x="125" y="166" width="47" height="30"/>
+                                <rect key="frame" x="107" y="166" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="upload"/>
+                                <state key="normal" title="upload form"/>
                                 <connections>
                                     <action selector="upload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OJG-5K-cIV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Rh-iT-Seg">
+                                <rect key="frame" x="90" y="385" width="152" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="bgupload stream form"/>
+                                <connections>
+                                    <action selector="bgUploadForm:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bV7-c5-vJw"/>
+                                    <action selector="bguploadStream:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZTU-DS-9TB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzp-Ei-Ozk">
