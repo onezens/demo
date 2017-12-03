@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		35F98C691FD2EE3100A76B92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F98C681FD2EE3100A76B92 /* AppDelegate.m */; };
+		35F98C6C1FD2EE3100A76B92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F98C6B1FD2EE3100A76B92 /* ViewController.m */; };
+		35F98C6E1FD2EE3100A76B92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35F98C6D1FD2EE3100A76B92 /* Assets.xcassets */; };
+		35F98C711FD2EE3100A76B92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35F98C6F1FD2EE3100A76B92 /* Main.storyboard */; };
+		35F98C741FD2EE3100A76B92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F98C731FD2EE3100A76B92 /* main.m */; };
+		35F98C821FD2EE5300A76B92 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F98C811FD2EE5300A76B92 /* Cocoa.framework */; };
+		35F98C861FD2EE5300A76B92 /* SourceEditorExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F98C851FD2EE5300A76B92 /* SourceEditorExtension.m */; };
+		35F98C891FD2EE5300A76B92 /* SourceEditorCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 35F98C881FD2EE5300A76B92 /* SourceEditorCommand.m */; };
+		35F98C8E1FD2EE5300A76B92 /* WZPlugin-Xcode.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 35F98C7F1FD2EE5300A76B92 /* WZPlugin-Xcode.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		35F98C8C1FD2EE5300A76B92 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35F98C5C1FD2EE3100A76B92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35F98C7E1FD2EE5300A76B92;
+			remoteInfo = "WZPlugin-Xcode";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		35F98C921FD2EE5300A76B92 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				35F98C8E1FD2EE5300A76B92 /* WZPlugin-Xcode.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		35F98C641FD2EE3100A76B92 /* WZPlugin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WZPlugin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		35F98C671FD2EE3100A76B92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		35F98C681FD2EE3100A76B92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		35F98C6A1FD2EE3100A76B92 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		35F98C6B1FD2EE3100A76B92 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		35F98C6D1FD2EE3100A76B92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		35F98C701FD2EE3100A76B92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		35F98C721FD2EE3100A76B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35F98C731FD2EE3100A76B92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		35F98C751FD2EE3100A76B92 /* WZPlugin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WZPlugin.entitlements; sourceTree = "<group>"; };
+		35F98C7F1FD2EE5300A76B92 /* WZPlugin-Xcode.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WZPlugin-Xcode.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35F98C811FD2EE5300A76B92 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		35F98C841FD2EE5300A76B92 /* SourceEditorExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorExtension.h; sourceTree = "<group>"; };
+		35F98C851FD2EE5300A76B92 /* SourceEditorExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorExtension.m; sourceTree = "<group>"; };
+		35F98C871FD2EE5300A76B92 /* SourceEditorCommand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SourceEditorCommand.h; sourceTree = "<group>"; };
+		35F98C881FD2EE5300A76B92 /* SourceEditorCommand.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SourceEditorCommand.m; sourceTree = "<group>"; };
+		35F98C8A1FD2EE5300A76B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35F98C8B1FD2EE5300A76B92 /* WZPlugin_Xcode.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WZPlugin_Xcode.entitlements; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		35F98C611FD2EE3100A76B92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35F98C7C1FD2EE5300A76B92 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35F98C821FD2EE5300A76B92 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		35F98C5B1FD2EE3100A76B92 = {
+			isa = PBXGroup;
+			children = (
+				35F98C661FD2EE3100A76B92 /* WZPlugin */,
+				35F98C831FD2EE5300A76B92 /* WZPlugin-Xcode */,
+				35F98C801FD2EE5300A76B92 /* Frameworks */,
+				35F98C651FD2EE3100A76B92 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		35F98C651FD2EE3100A76B92 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				35F98C641FD2EE3100A76B92 /* WZPlugin.app */,
+				35F98C7F1FD2EE5300A76B92 /* WZPlugin-Xcode.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		35F98C661FD2EE3100A76B92 /* WZPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				35F98C671FD2EE3100A76B92 /* AppDelegate.h */,
+				35F98C681FD2EE3100A76B92 /* AppDelegate.m */,
+				35F98C6A1FD2EE3100A76B92 /* ViewController.h */,
+				35F98C6B1FD2EE3100A76B92 /* ViewController.m */,
+				35F98C6D1FD2EE3100A76B92 /* Assets.xcassets */,
+				35F98C6F1FD2EE3100A76B92 /* Main.storyboard */,
+				35F98C721FD2EE3100A76B92 /* Info.plist */,
+				35F98C731FD2EE3100A76B92 /* main.m */,
+				35F98C751FD2EE3100A76B92 /* WZPlugin.entitlements */,
+			);
+			path = WZPlugin;
+			sourceTree = "<group>";
+		};
+		35F98C801FD2EE5300A76B92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35F98C811FD2EE5300A76B92 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		35F98C831FD2EE5300A76B92 /* WZPlugin-Xcode */ = {
+			isa = PBXGroup;
+			children = (
+				35F98C841FD2EE5300A76B92 /* SourceEditorExtension.h */,
+				35F98C851FD2EE5300A76B92 /* SourceEditorExtension.m */,
+				35F98C871FD2EE5300A76B92 /* SourceEditorCommand.h */,
+				35F98C881FD2EE5300A76B92 /* SourceEditorCommand.m */,
+				35F98C8A1FD2EE5300A76B92 /* Info.plist */,
+				35F98C8B1FD2EE5300A76B92 /* WZPlugin_Xcode.entitlements */,
+			);
+			path = "WZPlugin-Xcode";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		35F98C631FD2EE3100A76B92 /* WZPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35F98C781FD2EE3100A76B92 /* Build configuration list for PBXNativeTarget "WZPlugin" */;
+			buildPhases = (
+				35F98C601FD2EE3100A76B92 /* Sources */,
+				35F98C611FD2EE3100A76B92 /* Frameworks */,
+				35F98C621FD2EE3100A76B92 /* Resources */,
+				35F98C921FD2EE5300A76B92 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35F98C8D1FD2EE5300A76B92 /* PBXTargetDependency */,
+			);
+			name = WZPlugin;
+			productName = WZPlugin;
+			productReference = 35F98C641FD2EE3100A76B92 /* WZPlugin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		35F98C7E1FD2EE5300A76B92 /* WZPlugin-Xcode */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35F98C8F1FD2EE5300A76B92 /* Build configuration list for PBXNativeTarget "WZPlugin-Xcode" */;
+			buildPhases = (
+				35F98C7B1FD2EE5300A76B92 /* Sources */,
+				35F98C7C1FD2EE5300A76B92 /* Frameworks */,
+				35F98C7D1FD2EE5300A76B92 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WZPlugin-Xcode";
+			productName = "WZPlugin-Xcode";
+			productReference = 35F98C7F1FD2EE5300A76B92 /* WZPlugin-Xcode.appex */;
+			productType = "com.apple.product-type.xcode-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		35F98C5C1FD2EE3100A76B92 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = cc.onezen;
+				TargetAttributes = {
+					35F98C631FD2EE3100A76B92 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+					35F98C7E1FD2EE5300A76B92 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 35F98C5F1FD2EE3100A76B92 /* Build configuration list for PBXProject "WZPlugin" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 35F98C5B1FD2EE3100A76B92;
+			productRefGroup = 35F98C651FD2EE3100A76B92 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				35F98C631FD2EE3100A76B92 /* WZPlugin */,
+				35F98C7E1FD2EE5300A76B92 /* WZPlugin-Xcode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		35F98C621FD2EE3100A76B92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35F98C6E1FD2EE3100A76B92 /* Assets.xcassets in Resources */,
+				35F98C711FD2EE3100A76B92 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35F98C7D1FD2EE5300A76B92 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		35F98C601FD2EE3100A76B92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35F98C6C1FD2EE3100A76B92 /* ViewController.m in Sources */,
+				35F98C741FD2EE3100A76B92 /* main.m in Sources */,
+				35F98C691FD2EE3100A76B92 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35F98C7B1FD2EE5300A76B92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35F98C861FD2EE5300A76B92 /* SourceEditorExtension.m in Sources */,
+				35F98C891FD2EE5300A76B92 /* SourceEditorCommand.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		35F98C8D1FD2EE5300A76B92 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35F98C7E1FD2EE5300A76B92 /* WZPlugin-Xcode */;
+			targetProxy = 35F98C8C1FD2EE5300A76B92 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		35F98C6F1FD2EE3100A76B92 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				35F98C701FD2EE3100A76B92 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		35F98C761FD2EE3100A76B92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		35F98C771FD2EE3100A76B92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		35F98C791FD2EE3100A76B92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WZPlugin/WZPlugin.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J4N8RS9Y8V;
+				INFOPLIST_FILE = WZPlugin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.onezen.WZPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		35F98C7A1FD2EE3100A76B92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WZPlugin/WZPlugin.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J4N8RS9Y8V;
+				INFOPLIST_FILE = WZPlugin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cc.onezen.WZPlugin;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		35F98C901FD2EE5300A76B92 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "WZPlugin-Xcode/WZPlugin_Xcode.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J4N8RS9Y8V;
+				INFOPLIST_FILE = "WZPlugin-Xcode/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.onezen.WZPlugin.WZPlugin-Xcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		35F98C911FD2EE5300A76B92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "WZPlugin-Xcode/WZPlugin_Xcode.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J4N8RS9Y8V;
+				INFOPLIST_FILE = "WZPlugin-Xcode/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "cc.onezen.WZPlugin.WZPlugin-Xcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		35F98C5F1FD2EE3100A76B92 /* Build configuration list for PBXProject "WZPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35F98C761FD2EE3100A76B92 /* Debug */,
+				35F98C771FD2EE3100A76B92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35F98C781FD2EE3100A76B92 /* Build configuration list for PBXNativeTarget "WZPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35F98C791FD2EE3100A76B92 /* Debug */,
+				35F98C7A1FD2EE3100A76B92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35F98C8F1FD2EE5300A76B92 /* Build configuration list for PBXNativeTarget "WZPlugin-Xcode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35F98C901FD2EE5300A76B92 /* Debug */,
+				35F98C911FD2EE5300A76B92 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 35F98C5C1FD2EE3100A76B92 /* Project object */;
+}
