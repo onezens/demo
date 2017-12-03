@@ -44,6 +44,12 @@
             //解析获取类名
             NSRange range1 = [lineCode rangeOfString:@"\""];
             NSRange range2 = [lineCode rangeOfString:@"\"" options:NSBackwardsSearch];
+            
+            if (range1.location == NSNotFound) {
+                NSLog(@"lineCode: %@  \nover range ", lineCode);
+                return;
+            }
+            
             NSRange zeroRange = NSMakeRange(0, 0);
             
             if (!(NSEqualRanges(range1, zeroRange) || NSEqualRanges(range2, zeroRange))) {
