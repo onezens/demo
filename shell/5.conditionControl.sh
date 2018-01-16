@@ -48,5 +48,50 @@ case $b in
 esac
 
 
+i=0
+# util 是反的逻辑
+until [[ $i>3 ]]; do 
+	echo $i
+	i=`expr $i + 1`
+done
 
+
+for ((i=0; i<4; i++))
+do
+	echo "i=${i}"
+	if [ ${i} -eq 2 ]
+	then
+		echo "break"
+		break
+	fi
+done
+
+
+for ((i=0; i<5; i++))
+do
+	echo "i=${i}"
+	for ((j=0; j<5; j++))
+	do
+		echo -e "j=${j} \c"
+		if [ ${j} -eq 3 ]
+			then
+			echo "break"
+			break
+		fi
+	done
+done
+
+for ((i=0; i<5; i++))
+do
+	echo -e "i=${i} \c"
+	for ((j=0; j<5; j++))
+	do
+		if [ $j -eq 3 ]
+			then
+			echo "continue"
+			continue
+		fi
+		echo "j=${j}"
+	done
+done
 
