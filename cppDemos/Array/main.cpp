@@ -7,9 +7,28 @@
 //
 
 #include <iostream>
+#include "Array.hpp"
+using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+
+    Array a(10);
+    for (int i=0; i<10; i++) {
+        a.addData(i, i+10);
+    }
+    a.addData(10, 10);
+    cout << "print array: \n";
+    for (int i=0; i<a.length(); i++) {
+        cout << "idx:" << i << " value: " << a.getData(i) << "\n";
+    }
+    
+    Array a1 = a;
+    
+    if (a1 == a) {
+        cout << "equal" << endl;
+    }else{
+        cout << "diff" << endl;
+    }
+    
     return 0;
 }
